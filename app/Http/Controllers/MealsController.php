@@ -56,9 +56,17 @@ class MealsController extends Controller
 
     public function mealID($meal)
     {
-        $data['meal'] = $meal;
-        dd($data);
-        return View::make('simple', $data);
+        $data['mealID'] = $meal;
+        $meals = Meal::where('id', $meal);
+
+        //$mealData = $this->mealID($meal)->;
+
+        //dd($data);
+        return response()->json([
+
+            'data' => $meals
+
+        ]);
     }
 
     /**
