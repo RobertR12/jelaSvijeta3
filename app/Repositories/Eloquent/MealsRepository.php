@@ -43,8 +43,10 @@
           if($request->has('id')) {
 
               //$meals->where('id', $request->input('id'));
-              $meals = Meal::find($request->id);
 
+              //dd($request->id);
+              $meals = Meal::find($request->id);
+              //dd($meals);
               return $meals;
           }
       }

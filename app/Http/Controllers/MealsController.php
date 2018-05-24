@@ -43,6 +43,24 @@ class MealsController extends Controller
         ]);
     }
 
+    /*public function MealID(Request $request, $mealID)
+    {
+        $mealsRepo = $this->mealsRepo->checkId($request,$mealID);
+
+        return response()->json([
+
+            'data2' => $mealsRepo
+
+        ]);
+    }*/
+
+    public function mealID($meal)
+    {
+        $data['meal'] = $meal;
+        dd($data);
+        return View::make('simple', $data);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
