@@ -57,8 +57,8 @@ class MealsController extends Controller
     public function mealID($meal)
     {
         $data['mealID'] = $meal;
-        $meals = Meal::where('id', $meal);
-
+        $meals = Meal::where('id', $meal); // ovaj dio ne valja
+        dd($meals);
         //$mealData = $this->mealID($meal)->;
 
         //dd($data);
