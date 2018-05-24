@@ -32,14 +32,9 @@ class MealsController extends Controller
      */
     public function index(Request $request)
     {
-        //$para = $request->all();
-        //dd($para);
-        //dd($request);
         $mealsRepo = $this->mealsRepo->selectAll($request);
 
         $this->mealsRepo->checkId($request,$mealsRepo);
-
-
 
         return response()->json([
 
