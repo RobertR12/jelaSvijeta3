@@ -14,6 +14,8 @@ interface mealsInterface {
     public function checkDiff_time($request, $meals);
     public function checkPerP($request, $meals);
     public function returnResults($meals);
+
+
 }
 
 

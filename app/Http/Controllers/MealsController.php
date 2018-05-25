@@ -17,6 +17,7 @@ class MealsController extends Controller
 
     private $mealsRepo;
 
+
     public function __construct(mealsInterface $mealsRepo) {
 
         $this->mealsRepo = $mealsRepo;
@@ -30,57 +31,37 @@ class MealsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
     public function index(Request $request)
     {
+        $para = $request->all();
+
+        //dd($para);
+
         $mealsRepo = $this->mealsRepo->selectAll($request);
 
-       // $this->mealsRepo->checkId($request,$mealsRepo);
-
-        if(isset($mealID))
+        if ($request->has('id'))
         {
-            $mealsRepo = $mealID;
-            dd($mealsRepo);
-        };
+            $mealsRepo =$this->mealsRepo->checkId($request,$mealsRepo);
 
+        }
+
+        if ($request->has('category'))
+        {
+            $mealsRepo2 =$this->mealsRepo->checkCat($request,$mealsRepo);
+
+        }
 
         return response()->json([
 
-            'data' => $mealsRepo
+            'data' => $mealsRepo,
+            'data2' => $mealsRepo2,
 
         ]);
     }
 
-    /*public function MealID(Request $request, $mealID)
-    {
-        $mealsRepo = $this->mealsRepo->checkId($request,$mealID);
-
-        return response()->json([
-
-            'data2' => $mealsRepo
-
-        ]);
-    }*/
-
-    public function mealID($mealId, $request, $meal)
-
-    {
-        /*$data['mealID'] = $meal;
-        //dd($data);
-       $meals = Meal::where('id', $meal); // ovaj dio ne valja
-
-        //dd($meals);
-        //dd($data);*/
-
-        $meal12 = $this->mealsRepo->checkId($request, $meal);
-        dd($meal12);
-        return response()->json([
-
-            'data2' => $meal12
-
-        ]);
-    }
-
-    /**
+        /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response

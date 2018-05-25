@@ -29,7 +29,6 @@
 
       }
 
-
       public function setLang($request) {
 
           $language_id = isset($request['lang']) ? $request['lang'] : 3;
@@ -45,26 +44,26 @@
               //$meals->where('id', $request->input('id'));
 
               //dd($request->id);
-              $mealID = Meal::find($request->id);
-              //dd($mealID);
-              return $mealID;
+              $meals = Meal::find($request->id);
+              //dd($meals);
+              return $meals;
           }
       }
       public function checkCat($request, $meals)
       {
           if (isset($request['category'])) {
 
-              if (is_numeric($request['category'])) {
+          if (is_numeric($request['category'])) {
 
-                  $meals->where('category_id', $request['category']);
-              } elseif ($request['category'] == 'NULL') {
+              $meals->where('category_id', $request['category']);
+          } elseif ($request['category'] == 'NULL') {
 
-                  $meals->whereNull('category_id');
-              } elseif ($request['category'] == '!NULL') {
+              $meals->whereNull('category_id');
+          } elseif ($request['category'] == '!NULL') {
 
-                  $meals->whereNotNull('category_id');
-              }
+              $meals->whereNotNull('category_id');
           }
+     }
       }
       public function checkTag($request, $meals) {
 
@@ -123,6 +122,5 @@
           ]);
       }
 
-
-  }
+   }
 ?>

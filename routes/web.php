@@ -20,7 +20,7 @@ Route::get('/', function () {
 //Route::resource('meals','MealsController');
 
 
-Route::get('meals/{id}', 'MealsController@MealID');
+//Route::get('meals/{id}', 'MealsController@MealID');
 
 Route::resource('meals', 'MealsController');
 
@@ -33,10 +33,10 @@ Route::resource('meals', 'MealsController', ['except' => 'MealID']);*/
 
 
 
-Route::get('/meal/{id}', function($mealId)
+/*Route::get('/meal/{id}', function($mealId)
 {
     return 'Meal id '.$mealId;
-});
+});*/
 
 
 Route::resource('tags','TagsController');
