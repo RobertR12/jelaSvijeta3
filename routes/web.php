@@ -33,9 +33,9 @@ Route::resource('meals', 'MealsController', ['except' => 'MealID']);*/
 
 
 
-Route::get('/meal/{id}', function($id)
+Route::get('/meal/{id}', function($mealId)
 {
-    return 'Meal id '.$id;
+    return 'Meal id '.$mealId;
 });
 
 

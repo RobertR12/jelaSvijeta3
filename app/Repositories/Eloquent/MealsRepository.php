@@ -45,9 +45,9 @@
               //$meals->where('id', $request->input('id'));
 
               //dd($request->id);
-              $meals = Meal::find($request->id);
-              //dd($meals);
-              return $meals;
+              $mealID = Meal::find($request->id);
+              //dd($mealID);
+              return $mealID;
           }
       }
       public function checkCat($request, $meals)

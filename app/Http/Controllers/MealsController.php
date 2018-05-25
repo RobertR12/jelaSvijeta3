@@ -34,7 +34,14 @@ class MealsController extends Controller
     {
         $mealsRepo = $this->mealsRepo->selectAll($request);
 
-        $this->mealsRepo->checkId($request,$mealsRepo);
+       // $this->mealsRepo->checkId($request,$mealsRepo);
+
+        if(isset($mealID))
+        {
+            $mealsRepo = $mealID;
+            dd($mealsRepo);
+        };
+
 
         return response()->json([
 
@@ -54,17 +61,21 @@ class MealsController extends Controller
         ]);
     }*/
 
-    public function mealID($meal)
-    {
-        $data['mealID'] = $meal;
-        $meals = Meal::where('id', $meal); // ovaj dio ne valja
-        dd($meals);
-        //$mealData = $this->mealID($meal)->;
+    public function mealID($mealId, $request, $meal)
 
+    {
+        /*$data['mealID'] = $meal;
         //dd($data);
+       $meals = Meal::where('id', $meal); // ovaj dio ne valja
+
+        //dd($meals);
+        //dd($data);*/
+
+        $meal12 = $this->mealsRepo->checkId($request, $meal);
+        dd($meal12);
         return response()->json([
 
-            'data' => $meals
+            'data2' => $meal12
 
         ]);
     }
