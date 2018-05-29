@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 
 use App\Http\Requests\formValidatorRequest;
 use App\Meal;
+use App\Language;
 use Illuminate\Support\Facades\DB;
 use App\Contracts\mealsInterface;
 use Illuminate\Http\Request;
@@ -89,6 +90,9 @@ class MealsController extends Controller
     {
         $para = $request->all();
 
+
+
+
         //dd($para);
 
         $mealsRepo = $this->mealsRepo->selectAll($request);
@@ -160,6 +164,12 @@ class MealsController extends Controller
     {
         //dd($id);
         $meals = Meal::findOrFail($id);
+
+        $jezik = DB::table('meals as M')
+            ->join('languages as Lang', 'M.id', '=', 'UP.user_id')
+            ->where('UP.user_id', '=', $id)
+            ->select('UP.Id as ID','UP.Amount as AMA','UP.created_at as CA','UP.updated_at as UA')
+            ->get();
         //dd($meals);
 
         return view('meals.show')->with('meals', $meals);
@@ -171,9 +181,18 @@ class MealsController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function edit(Meal $meal)
+    public function edit($id)
     {
-        //
+        //find the user from db and save it as var
+
+        $meal= Meal::find($id);
+        $kategorije = DB::table('categories')->get();
+        $language = DB::table('languages')->get();
+
+
+        //return a view and pass in the var we prev created
+
+        return view('meals.edit')->with('meal', $meal)->with('kategorije', $kategorije)->with('language', $language);
     }
 
     /**
@@ -183,9 +202,22 @@ class MealsController extends Controller
      * @param  \App\Meal  $meal
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Meal $meal)
+    public function update(formValidatorRequest $request, Meal $meal)
     {
-        //
+        $validator = $request->validated();
+
+        $meal = new meal;
+
+        $meal->title = $request->input('title');
+        $meal->slug = $request->input('slug');
+        $meal->category_id = $request->input('category_id');
+        $meal->description = $request->input('description');
+        $meal->language_id = $request->input('language_id');
+
+        $meal->save();
+
+        Session::flash('success', 'Jelo uspješno ažurirano!');
+        return redirect()->route('meals.show', $meal->id);
     }
 
     /**

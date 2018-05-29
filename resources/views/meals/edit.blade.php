@@ -14,11 +14,22 @@
             {{Form::label('description', 'Description:')}}<br><br>
             {{ Form::text('description', null, ['class' => 'form-control']) }}<br><br>
 
-            {{Form::label('category_id', 'Category:')}}<br><br>
-            {{ Form::text('category_id'), null, ['class' => 'form-control'] }}<br><br>
+            {{Form::label('slug', 'Slug:')}}<br><br>
+            {{ Form::text('slug', null, ['class' => 'form-control']) }}<br><br>
 
-            {!!Form::label('language_id', 'Language:')!!}<br><br>
-            {!!Form::password('language_id', null, ['class' => 'form-control'])!!}<br><br>
+            {{Form::label('category_id', 'category_id:')}}
+            <select name="category_id" class="form-control">
+                @foreach($kategorije as $kata)
+                    <option value='{{$kata->id}}'>{{$kata->title}}</option>
+                @endforeach
+            </select><br><br>
+
+            {{Form::label('language_id', 'language_id:')}}
+            <select name="language_id" class="form-control">
+                @foreach($language as $lang)
+                    <option value='{{$lang->id}}'>{{$lang->title}}</option>
+                @endforeach
+            </select><br><br>
 
 
         </div>

@@ -31,7 +31,6 @@ Route::resource('meals', 'MealsController', ['except' => 'MealID']);*/
     return 'Meal id '.$mealId;
 });*/
 
-
 Route::get('meals/{id}', 'MealsController@idMeals');
 Route::get('category/{categoryId}', 'MealsController@catMeals');
 Route::get('meals/{id}/category/{categoryId}', 'MealsController@catIdMeals');
