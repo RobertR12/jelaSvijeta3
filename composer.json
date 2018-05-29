@@ -11,8 +11,8 @@
         "jeroennoten/laravel-adminlte": "^1.23",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "unlu/laravel-api-query-builder": "~1.0",
-        "svijetJela/app/Repositories": "0.*"
+        "laravelcollective/html": "^5.4.0",
+        "unlu/laravel-api-query-builder": "~1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
@@ -58,4 +58,5 @@
         "sort-packages": true,
         "optimize-autoloader": true
     }
+
 }

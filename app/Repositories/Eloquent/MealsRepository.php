@@ -8,6 +8,8 @@
     use App\Contracts\mealsInterface;
     use Illuminate\Http\Request;
     use Illuminate\Database\Eloquent\SoftDeletes;
+    use Illuminate\Support\Facades\DB;
+
 
     use Illuminate\Container\Container as App;
 
@@ -18,9 +20,19 @@
 
       use SoftDeletes;
 
+      private $meals;
+
+       /**
+        * MealsRepository constructor.
+        * @param $meals
+        */
+     /*  public function __construct($meals)
+       {
+           $this->meals = $meals;
+       }*/
 
 
-       public function selectAll($request) {
+      public function selectAll($request) {
 
 
           $meals = Meal::all();
@@ -37,33 +49,22 @@
           return $meals;
       }
 
-      public function checkId($request, $meals) {
+      public function checkId($id) {
 
-          if($request->has('id')) {
-
-              //$meals->where('id', $request->input('id'));
-
-              //dd($request->id);
-              $meals = Meal::find($request->id);
-              //dd($meals);
+              $meals = Meal::find($id);
               return $meals;
-          }
+
       }
-      public function checkCat($request, $meals)
+      public function checkCat($categoryId)
       {
-          if (isset($request['category'])) {
+          $meals = Meal::where('category_id', $categoryId)->get();
+          return $meals;
+      }
+      public function checkIdAndCat($id, $categoryId){
+          $meals = Meal::where('category_id', $categoryId)->where('id', $id)->get();
 
-          if (is_numeric($request['category'])) {
+          return $meals;
 
-              $meals->where('category_id', $request['category']);
-          } elseif ($request['category'] == 'NULL') {
-
-              $meals->whereNull('category_id');
-          } elseif ($request['category'] == '!NULL') {
-
-              $meals->whereNotNull('category_id');
-          }
-     }
       }
       public function checkTag($request, $meals) {
 

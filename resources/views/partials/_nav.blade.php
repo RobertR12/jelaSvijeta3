@@ -14,17 +14,16 @@
                 <span class="icon-bar"></span>
 
             </button>
-            <a class="navbar-brand" href="/1zadLar1/public/">Prijatelji</a>
+            <a class="navbar-brand" href="/1zadLar1/public/">Meals</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse navbar-right" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
-                <li><a class="{{ Request::is('/') ? "active" : "" }}" href="/1zadLar1/public/">Home</a></li>
-                <li><a class="{{ Request::is('user') ? "active" : "" }}" href="/1zadLar1/public/user">Korisnik</a></li>
-                <li><a class="{{ Request::is('lokacija') ? "active" : "" }}" href="/1zadLar1/public/lokacija">Lokacija</a></li>
-                <li><a class="{{ Request::is('prijatelji') ? "active" : "" }}" href="/1zadLar1/public/prijatelji">Prijatelji</a></li>
-                <li><a class="{{ Request::is('pretplatnik') ? "active" : "" }}" href="/1zadLar1/public/pretplatnik">Pretplate</a></li>
+                <li><a class="{{ Request::is('/') ? "active" : "" }}" href="/jelaSvijeta/public/">Home</a></li>
+                <li><a class="{{ Request::is('meals/create') ? "active" : "" }}" href="/jelaSvijeta/public/meals/create">Unos Jela</a></li>
+                <li><a class="{{ Request::is('meals') ? "active" : "" }}" href="/jelaSvijeta/public/meals">Pregled Jela</a></li>
+
 
             </ul>
 

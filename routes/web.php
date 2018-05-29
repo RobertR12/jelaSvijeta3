@@ -15,15 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-
-
-//Route::resource('meals','MealsController');
-
-
 //Route::get('meals/{id}', 'MealsController@MealID');
 
 Route::resource('meals', 'MealsController');
-
 
 /*Route::get('meals/{id}', [
     'as' => 'meals.MealID',
@@ -32,11 +26,17 @@ Route::resource('meals', 'MealsController');
 Route::resource('meals', 'MealsController', ['except' => 'MealID']);*/
 
 
-
 /*Route::get('/meal/{id}', function($mealId)
 {
     return 'Meal id '.$mealId;
 });*/
+
+
+Route::get('meals/{id}', 'MealsController@idMeals');
+Route::get('category/{categoryId}', 'MealsController@catMeals');
+Route::get('meals/{id}/category/{categoryId}', 'MealsController@catIdMeals');
+
+
 
 
 Route::resource('tags','TagsController');
