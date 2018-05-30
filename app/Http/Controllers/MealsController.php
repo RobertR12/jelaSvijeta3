@@ -13,7 +13,6 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Eloquent\MealsRepository;
 
-
 use Session;
 
 class MealsController extends Controller
@@ -61,6 +60,7 @@ class MealsController extends Controller
        return response()->json([
            'data' => $mealsRepo,
        ]);
+       
    }
     public function catMeals(Request $request)
     {
@@ -85,7 +85,6 @@ class MealsController extends Controller
 
     }
 
-
     public function index(Request $request)
     {
         $para = $request->all();
@@ -95,24 +94,19 @@ class MealsController extends Controller
         /*if ($request->has('id'))
         {
             $mealsRepo =$this->mealsRepo->checkId($request,$mealsRepo);
-
         }
-
         if ($request->has('category'))
         {
             $mealsRepo2 =$this->mealsRepo->checkCat($request,$mealsRepo);
-
         }*/
         // json prikaz podataka
         /*return response()->json([
-
             'data' => $mealsRepo,
             //'data2' => $mealsRepo2,
 
         ]);*/
 
        /* $langid = $mealsRepo->language_id;
-
 
         $jezik = DB::table('meals as M')
             ->join('languages as Lang', 'M.language_id', '=', 'Lang.id')
@@ -157,7 +151,6 @@ class MealsController extends Controller
 
             Session::flash('success', 'Jelo uspješno uneseno!');
             return redirect()->route('meals.show', $meal->id);
-
     }
     /**
      * Display the specified resource.

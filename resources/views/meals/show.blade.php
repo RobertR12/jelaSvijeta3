@@ -15,6 +15,8 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Kategorija</th>
+                <th>Kareirano</th>
+                <th>Ažurirano</th>
                 <th></th>
                 </thead>
                 <tbody>
