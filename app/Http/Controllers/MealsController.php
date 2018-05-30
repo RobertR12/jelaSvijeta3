@@ -89,14 +89,9 @@ class MealsController extends Controller
     public function index(Request $request)
     {
         $para = $request->all();
-
-
-
-
         //dd($para);
 
         $mealsRepo = $this->mealsRepo->selectAll($request);
-
         /*if ($request->has('id'))
         {
             $mealsRepo =$this->mealsRepo->checkId($request,$mealsRepo);
@@ -115,6 +110,16 @@ class MealsController extends Controller
             //'data2' => $mealsRepo2,
 
         ]);*/
+
+       /* $langid = $mealsRepo->language_id;
+
+
+        $jezik = DB::table('meals as M')
+            ->join('languages as Lang', 'M.language_id', '=', 'Lang.id')
+            ->where('Lang.id', '=', $langid)
+            ->select('Lang.id as ID','Lang.title as LT')
+            ->get();*/
+
         return view('meals.index')->with('mealsRepo', $mealsRepo);
     }
 
@@ -165,11 +170,6 @@ class MealsController extends Controller
         //dd($id);
         $meals = Meal::findOrFail($id);
 
-        $jezik = DB::table('meals as M')
-            ->join('languages as Lang', 'M.id', '=', 'UP.user_id')
-            ->where('UP.user_id', '=', $id)
-            ->select('UP.Id as ID','UP.Amount as AMA','UP.created_at as CA','UP.updated_at as UA')
-            ->get();
         //dd($meals);
 
         return view('meals.show')->with('meals', $meals);

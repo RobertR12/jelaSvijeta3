@@ -16,7 +16,7 @@
     <hr>
 
     <div class="row">
-        <div class="col-md-10">
+        <div class="col-md-12">
 
             <table class="table">
                 <thead>
@@ -24,7 +24,6 @@
                 <th>Title</th>
                 <th>Description</th>
                 <th>Kategorija</th>
-                <th>Jezik</th>
                 <th>Created_at</th>
                 <th>Updated_at</th>
                 <th></th>
@@ -35,8 +34,7 @@
                         <th>{{ $meal->id }}</th>
                         <td>{{ $meal->title }}</td>
                         <td>{{ $meal->description }}</td>
-                        <td>{{ $meal->category_id }}</td>
-                        <td>{{ $meal->language_id }}</td>
+                        <td>{{ $meal->Category->title}} </td>
                         <td>{{ date('j M, Y, H:i', strtotime($meal->created_at )) }}</td>
                         <td>{{ date('j M, Y, H:i', strtotime($meal->updated_at )) }}</td>
 

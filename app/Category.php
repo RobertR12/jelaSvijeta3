@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
-    public function Language()
+    public function Meals()
     {
-        return $this->belongsTo( 'App\Language', 'language_id ');
+        return $this->belongsTo( 'App\Meal', 'category_id ');
     }
 }

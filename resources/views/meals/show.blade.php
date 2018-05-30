@@ -23,6 +23,7 @@
                         <th>{{ $meals->id }}</th>
                         <td>{{ $meals->title }}</td>
                         <td>{{ $meals->description }}</td>
+                        <td>{{ $meals->description }}</td>
 
                         <td>{{ date('j M, Y, H:i', strtotime($meals->created_at )) }}</td>
                         <td>{{ date('j M, Y, H:i', strtotime($meals->updated_at )) }}</td>
