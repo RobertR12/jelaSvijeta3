@@ -13,7 +13,7 @@
 
 
         @include('partials._messages')
-
+            LARAVEL
         @yield('content')
 
 

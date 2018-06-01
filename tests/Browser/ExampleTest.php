@@ -10,13 +10,13 @@ class ExampleTest extends DuskTestCase
 {
     /**
      * A basic browser test example.
-     *
+     * @throws
      * @return void
      */
     public function testBasicExample()
     {
 
-        $this->browse(function ( Browser $browser) {
+        $this->browse(function (Browser $browser) {
             $browser->visit('/meals/create')
                 ->type('title', 'mahune')
                 ->type('slug', 'slugwe')
@@ -27,7 +27,11 @@ class ExampleTest extends DuskTestCase
         });
 
 
+        /*$this->browse(function (Browser $browser) {
+            $browser->visit('/meals/create')
+                ->assertSee('title');
 
 
+        });*/
     }
 }

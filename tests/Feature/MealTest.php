@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use Tests\TestCase;
+//use Illuminate\Foundation\Testing\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -20,19 +21,9 @@ class MealTest extends TestCase
         $this->assertTrue(true);
     }
 
-    public function testFormCreateMeal()
-    {
-
-        /*$this->visit('/meals/create')
-            ->type('Mahune', 'title')
-            ->type('Mahune2wew', 'slug')
-            ->select('34', 'category_id')
-            ->type('descripdsftion', 'description')
-            ->select('3', 'language_id')
-            ->press('Create Meal');*/
 
 
-    }
+
 
 
 

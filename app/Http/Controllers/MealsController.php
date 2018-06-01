@@ -12,6 +12,7 @@ use App\Contracts\mealsInterface;
 use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Eloquent\MealsRepository;
+use Illuminate\Support\Facades\Cache;
 
 use Session;
 
@@ -90,7 +91,11 @@ class MealsController extends Controller
         $para = $request->all();
         //dd($para);
 
+        $value = Cache::get('key');
+        dump($value);
+
         $mealsRepo = $this->mealsRepo->selectAll($request);
+
         /*if ($request->has('id'))
         {
             $mealsRepo =$this->mealsRepo->checkId($request,$mealsRepo);
@@ -113,6 +118,7 @@ class MealsController extends Controller
             ->where('Lang.id', '=', $langid)
             ->select('Lang.id as ID','Lang.title as LT')
             ->get();*/
+       
 
         return view('meals.index')->with('mealsRepo', $mealsRepo);
     }
