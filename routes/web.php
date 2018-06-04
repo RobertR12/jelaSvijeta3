@@ -14,15 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
-
             ///CACHE
                 // KREIRANJE CACHE-a putem ruta
                 /*Route::get('/', function()
                 {
                     Cache::put( 'cachekey', 'I am in the cache baby!', 1 );
                 });*/
-
                 //DOHVACANJE CACHE-a
                 /*Route::get('/', function()
                 {
