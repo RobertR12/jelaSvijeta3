@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 
-///CACHE
+            ///CACHE
                 // KREIRANJE CACHE-a putem ruta
                 /*Route::get('/', function()
                 {
@@ -29,21 +29,13 @@ Route::get('/', function () {
                     return Cache::get( 'cachekey' );
                 });*/
 
-//Route::get('meals/{id}', 'MealsController@MealID');
-
-Route::resource('meals', 'MealsController');
-
-/*Route::get('meals/{id}', [
-    'as' => 'meals.MealID',
-    'uses' => 'MealsController@MealID'
-]);
-Route::resource('meals', 'MealsController', ['except' => 'MealID']);*/
 
 
-/*Route::get('/meal/{id}', function($mealId)
-{
-    return 'Meal id '.$mealId;
-});*/
+Route::middleware(['auth', 'admin'])->group(function() {
+    Route::resource('meals', 'MealsController');
+});
+
+
 
 Route::get('meals/{id}', 'MealsController@idMeals');
 Route::get('category/{categoryId}', 'MealsController@catMeals');
@@ -52,7 +44,13 @@ Route::get('meals/{id}/category/{categoryId}', 'MealsController@catIdMeals');
 
 
 
+
+
 Route::resource('tags','TagsController');
 Route::resource('ingredients','IngredientsController');
 Route::resource('categories','CategoriesController');
 Route::resource('languages','LanguagesController');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

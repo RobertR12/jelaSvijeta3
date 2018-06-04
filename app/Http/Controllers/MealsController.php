@@ -14,6 +14,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Eloquent\MealsRepository;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Redis;
+use App\Http\Middleware\AdminMiddleware;
 
 use Session;
 
@@ -24,7 +25,9 @@ class MealsController extends Controller
 
     public function __construct(mealsInterface $mealsRepo) {
 
+       //$this->middleware('admin');
         $this->mealsRepo = $mealsRepo;
+
 
         return $mealsRepo;
     }
