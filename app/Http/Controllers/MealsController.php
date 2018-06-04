@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Eloquent\MealsRepository;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Redis;
 
 use Session;
 
@@ -91,34 +92,15 @@ class MealsController extends Controller
         $para = $request->all();
         //dd($para);
 
-        $value = Cache::get('key');
-        dump($value);
+        //spremanje podatka u cache
+        //Cache::put('robi', 'Robert Rešetar',1);
+
+        //vraćanje podataka iz cahea
+        $value = Cache::get('robi');
+        //dump($value);
 
         $mealsRepo = $this->mealsRepo->selectAll($request);
 
-        /*if ($request->has('id'))
-        {
-            $mealsRepo =$this->mealsRepo->checkId($request,$mealsRepo);
-        }
-        if ($request->has('category'))
-        {
-            $mealsRepo2 =$this->mealsRepo->checkCat($request,$mealsRepo);
-        }*/
-        // json prikaz podataka
-        /*return response()->json([
-            'data' => $mealsRepo,
-            //'data2' => $mealsRepo2,
-
-        ]);*/
-
-       /* $langid = $mealsRepo->language_id;
-
-        $jezik = DB::table('meals as M')
-            ->join('languages as Lang', 'M.language_id', '=', 'Lang.id')
-            ->where('Lang.id', '=', $langid)
-            ->select('Lang.id as ID','Lang.title as LT')
-            ->get();*/
-       
 
         return view('meals.index')->with('mealsRepo', $mealsRepo);
     }
@@ -167,8 +149,18 @@ class MealsController extends Controller
     public function show($id)
     {
         //dd($id);
-        $meals = Meal::findOrFail($id);
+       //$meals = Meal::findOrFail($id);
 
+       //korištenje cachinga kod dohvaćanja podataka iz baze
+
+        $meals = Cache::remenber('Meal:findOrFail', 30, Function()
+            {
+                return Meal::orderBy('created_at', 'asc')->get();
+            }
+        );
+
+        //korištenje predisa
+        //$meals = Redis::get('Meal::findOrFail'.$id);
         //dd($meals);
 
         return view('meals.show')->with('meals', $meals);

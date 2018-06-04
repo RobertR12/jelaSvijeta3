@@ -15,6 +15,20 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+
+///CACHE
+                // KREIRANJE CACHE-a putem ruta
+                /*Route::get('/', function()
+                {
+                    Cache::put( 'cachekey', 'I am in the cache baby!', 1 );
+                });*/
+
+                //DOHVACANJE CACHE-a
+                /*Route::get('/', function()
+                {
+                    return Cache::get( 'cachekey' );
+                });*/
+
 //Route::get('meals/{id}', 'MealsController@MealID');
 
 Route::resource('meals', 'MealsController');
