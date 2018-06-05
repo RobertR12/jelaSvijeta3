@@ -55,7 +55,8 @@ editiranja samog jela tako što se redirectamo na tranicu za editiranje.
         }
 
 ## meals create [/meals/create]
-Kreiranje novog jela.
+Kreiranje novog jela. Postoje input polja za naziv, kategoriju, 
+slug, jezik i opis jela.
 
 ### Create new meal [POST]
     
@@ -79,15 +80,13 @@ Kreiranje novog jela.
             "update_at": "10 Apr, 2018, 13:15"
         }    
         
-
 ## meals edit [/meals/{id}/edit]
 
 Ažuriranje jela prema id-u.
 
-+ Parameters 
++ Requred
+    "id" - id jela kojeg se želi ažurirati.
 
- + id (number) - id jela kojeg se želi ažurirati
- 
 ### Edit meal [POST]
 
 + Request (application/json)
