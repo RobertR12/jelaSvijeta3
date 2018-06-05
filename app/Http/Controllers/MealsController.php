@@ -13,8 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Eloquent\MealsRepository;
 use Illuminate\Support\Facades\Cache;
-use Illuminate\Support\Facades\Redis;
-use App\Http\Middleware\AdminMiddleware;
+
 
 use Session;
 

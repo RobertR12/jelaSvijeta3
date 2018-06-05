@@ -33,14 +33,9 @@ Route::middleware(['auth', 'admin'])->group(function() {
 });
 
 
-
 Route::get('meals/{id}', 'MealsController@idMeals');
 Route::get('category/{categoryId}', 'MealsController@catMeals');
 Route::get('meals/{id}/category/{categoryId}', 'MealsController@catIdMeals');
-
-
-
-
 
 
 Route::resource('tags','TagsController');

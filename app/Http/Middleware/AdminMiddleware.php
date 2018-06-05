@@ -3,6 +3,8 @@
 namespace App\Http\Middleware;
 
 use Closure;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Support\Facades\Auth;
 
 class AdminMiddleware
 {
@@ -57,7 +59,8 @@ class AdminMiddleware
         if (Auth::check() && Auth::user()->role_id == 1) {
             return $next($request);
         }
-        return redirect('home')->with('error','You have not admin access');
+        return redirect('home')->with('errors','You have not admin access');
+
     }
 
 

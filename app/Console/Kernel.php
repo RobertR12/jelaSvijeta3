@@ -39,7 +39,7 @@ class Kernel extends ConsoleKernel
 
         require base_path('routes/console.php');
     }
-    protected $routeMiddleware = [
+    /*protected $routeMiddleware = [
         'auth' => \Illuminate\Auth\Middleware\Authenticate::class,
         'auth.basic' => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
@@ -47,7 +47,7 @@ class Kernel extends ConsoleKernel
         'guest' => \App\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
 
-        'admin' => 'App\Http\Middleware\AdminMiddleware',
+        'admin' => \App\Http\Middleware\AdminMiddleware::class,
 
-    ];
+    ];*/
 }
