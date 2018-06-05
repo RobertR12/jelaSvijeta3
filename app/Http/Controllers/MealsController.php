@@ -151,15 +151,15 @@ class MealsController extends Controller
     public function show($id)
     {
         //dd($id);
-       //$meals = Meal::findOrFail($id);
+       $meals = Meal::findOrFail($id);
 
        //korištenje cachinga kod dohvaćanja podataka iz baze
 
-        $meals = Cache::remenber('Meal:findOrFail', 30, Function()
+        /*$meals = Cache::remember('Meal:findOrFail', 30, Function()
             {
                 return Meal::orderBy('created_at', 'asc')->get();
             }
-        );
+        );*/
 
         //korištenje predisa
         //$meals = Redis::get('Meal::findOrFail'.$id);
@@ -199,7 +199,8 @@ class MealsController extends Controller
     {
         $validator = $request->validated();
 
-        $meal = new meal;
+        $meal = Meal::find($meal->id);
+
 
         $meal->title = $request->input('title');
         $meal->slug = $request->input('slug');

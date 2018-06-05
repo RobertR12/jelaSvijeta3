@@ -25,7 +25,7 @@ class formValidatorRequest extends FormRequest
     {
         return [
             'title' => 'required|unique:meals|max:150',
-            'slug' => 'required|may:50',
+            'slug' => 'required|max:50',
             'category_id' => 'required',
             'description' => 'required|max:300',
             'language_id' => 'required'
