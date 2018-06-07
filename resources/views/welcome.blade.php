@@ -13,7 +13,12 @@
 
 
         @include('partials._messages')
-            LARAVEL
+
+        {{--@php
+            __("welcome:");
+        @endphp--}}
+        {{__("welcome")}}
+
         @yield('content')
 
 

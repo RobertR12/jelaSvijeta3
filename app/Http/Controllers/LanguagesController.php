@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Language;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class LanguagesController extends Controller
 {
@@ -12,9 +13,12 @@ class LanguagesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
+    public function index(Request $request,$locale){
+        //set’s application’s locale
+        app()->setLocale($locale);
+
+        //Gets the translated message and displays it
+        echo trans('lang.msg');
     }
 
     /**
