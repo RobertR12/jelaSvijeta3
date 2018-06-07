@@ -1,0 +1,115 @@
+FORMAT: 1A
+HOST: http://localhost/jelaSvijeta/public/
+
+# Jela svijeta
+
+Projekat na praksi u Plavoj tvornici. Projekat ima svrhu prikaza jela svijete, sa 
+mogućnosti njihovog ažuriranja uz postojanje autorizacije i autentifikacije.
+
+# Group Meals
+Prikaz jela.
+## meals Route [/meals]
+
+Ispisuje sva jela, te postoje mogućnosti za editiranje samog jela i pregleda detalja
+jela na novoj stranici.
+
+### List meals [GET]
+
++ Response 200 (application/json)
+
+        {
+        "id": 62,
+        "title":"kokošja juha",
+        "description": "domaća juha od kokoši",
+        "category": "Topla predjela", 
+        "created at": "10 Apr, 2018, 13:15", 
+        "update_at": "10 Apr, 2018, 13:15"
+        }
+                
+            
+
+## meals Route id [/meals/{id}]
+
+Prikazuje detalje o jednom jelu prem id-u jela, također posroji mogućnost 
+editiranja samog jela tako što se redirectamo na tranicu za editiranje.
+
+ + Requred
+    "id" - id jela kojeg se želi prikazati
+
+### List specific meal  [GET]
+
++ Request (application/json)
+
+        {
+            "id":62
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "id": 62,
+            "title":"kokošja juha",
+            "description": "domaća juha od kokoši",
+            "category": "Topla predjela", 
+            "created at": "10 Apr, 2018, 13:15", 
+            "update_at": "10 Apr, 2018, 13:15"
+        }
+
+## meals create [/meals/create]
+Kreiranje novog jela. Postoje input polja za naziv, kategoriju, 
+slug, jezik i opis jela.
+
+### Create new meal [POST]
+    
++ Request (aplicattion/json)
+
+        {
+            "title": "mesna juha",
+            "slug": "mesna",
+            "category_id": "352,
+            "description": "nesto nesto",
+            "language_id": "3"
+        }
+        
++ Response 200 (application/json)
+
+        {
+            "id": 62,
+            "title":"kokošja juha",
+            "description": "domaća juha od kokoši",
+            "category": "Topla predjela", 
+            "created at": "10 Apr, 2018, 13:15", 
+            "update_at": "10 Apr, 2018, 13:15"
+        }
+        
+        
+## meals edit [/meals/{id}/edit]
+
+Ažuriranje jela prema id-u.
+
++ Requred
+    "id" - id jela kojeg se želi ažurirati
+
+### Edit meal [POST]
+
++ Request (application/json)
+
+        {
+            "title": "mesna juha",
+            "slug": "mesna",
+            "category_id": "352,
+            "description": "nesto nesto",
+            "language_id": "3"
+        }
+        
++ Response 200 (appication/json)
+
+        {
+            "title": "mesna juha",
+            "slug": "mesna",
+            "category_id": "35",
+            "description": "nesto nesto",
+            "language_id": "3",
+            "created at": "10 Apr, 2018, 13:15", 
+            "update_at": "10 Apr, 2018, 15:15"
+        }
