@@ -49,9 +49,23 @@ Route::get('/', function () {
                 });*/
 Route::get('markAsRead', function (){
 
-    auth()->user()->unreadNotifications->markAsRead();
+    $id = auth()->user()->unreadNotifications[0]->id;
 
-    return redirect()->back();})->name('markRead');
+    $meal_id = auth()->user()->unreadNotifications[0]->data['meal_id'];
+
+    auth()->user()->unreadNotifications->where('id', $id)->markAsRead();
+
+    return redirect()->route('meals.show', $meal_id);})->name('markRead');
+
+Route::get('readNotifi',function (){
+
+    //$id = auth()->user()->unreadNotifications[0]->id;
+
+    $meal_id = auth()->user()->readNotifications[0]->data['meal_id'];
+
+    return redirect()->route('meals.show', $meal_id);})->name('readNotifi');
+
+
 
 
 Route::middleware(['auth', 'admin'])->group(function() {

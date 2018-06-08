@@ -11,15 +11,17 @@ use App\Meal;
 class newMealNotifi extends Notification
 {
     use Queueable;
-
+    private $meal;
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(Meal $meal)
     {
-        //
+        $this->meal = $meal;
+
+        return $meal;
     }
 
     /**
@@ -56,8 +58,8 @@ class newMealNotifi extends Notification
     public function toArray($notifiable)
     {
         return [
-            'data' => 'Uneseno je novo jelo',
-            'notifi_id' => $this->notification->id
+            'data' => 'Uneseno je novo jelo '.$this->meal->title,
+            'meal_id' => $this->meal->id,
 
         ];
     }

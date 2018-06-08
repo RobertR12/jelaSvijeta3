@@ -150,12 +150,10 @@ class MealsController extends Controller
 
             foreach ($users as $user){
 
-                $user->notify(new NewMealNotifi());
+                $user->notify(new NewMealNotifi($meal));
 
-               // User::find($user)->notify(new NewMealNotifi());
+
             }
-
-            //User::find($user)->notify(new NewMealNotifi());
         /////////////////
 
 

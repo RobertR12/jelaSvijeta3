@@ -65,16 +65,16 @@
 
 
                     <ul class="dropdown-menu">
-                        <li><a href="{{route('markRead')}}" style="color: #00e765">Mark all as read</a> </li>
+
 
                             @foreach(auth()->user()->unreadNotifications as $notification)
 
-                            <li style="background-color: lightgrey"><a href="#">{{$notification->data['data']}}</a></li>
+                            <li style="background-color: #41FF8E"><a href="{{route('markRead')}}">{{$notification->data['data']}}</a></li>
                             @endforeach
 
                             @foreach(auth()->user()->readNotifications as $notification)
 
-                                <li><a href="#">{{$notification->data['data']}}</a></li>
+                                <li><a style="background-color: whitesmoke" href="{{route('readNotifi')}}">{{$notification->data['data']}}</a></li>
                             @endforeach
 
                     </ul>
