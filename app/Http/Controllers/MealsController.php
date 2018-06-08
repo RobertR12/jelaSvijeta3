@@ -14,6 +14,9 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use App\Repositories\Eloquent\MealsRepository;
 use Illuminate\Support\Facades\Cache;
 
+use App\User;
+use App\Notifications\NewMealNotifi;
+
 
 use Session;
 
@@ -140,6 +143,23 @@ class MealsController extends Controller
             $meal->save();
 
             Session::flash('success', 'Jelo uspješno uneseno!');
+
+            // Notifikacija za nova jela
+
+            $users = User::all();
+
+            foreach ($users as $user){
+
+                $user->notify(new NewMealNotifi());
+
+               // User::find($user)->notify(new NewMealNotifi());
+            }
+
+            //User::find($user)->notify(new NewMealNotifi());
+        /////////////////
+
+
+
             return redirect()->route('meals.show', $meal->id);
     }
     /**

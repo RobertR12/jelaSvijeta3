@@ -14,7 +14,8 @@
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.4.0",
         "predis/predis": "^1.1",
-        "unlu/laravel-api-query-builder": "~1.0"
+        "unlu/laravel-api-query-builder": "~1.0",
+        "vinkla/pusher": "^4.1"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

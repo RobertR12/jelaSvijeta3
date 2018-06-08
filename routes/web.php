@@ -1,5 +1,9 @@
 <?php
 
+use App\User;
+use App\Notifications\NewMealNotifi;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,6 +16,16 @@
 */
 
 Route::get('/', function () {
+
+    //User::find(10)->notify(new NewMealNotifi());
+
+    //$users = User::selectAll();
+
+    /*$user = User::find(10);
+
+    User::find(10)->notify(new NewMealNotifi());*/
+
+    //Notification::send($users, new NewMealNotifi());
 
     return view('welcome');
 });
@@ -28,11 +42,16 @@ Route::get('/', function () {
                     Cache::put( 'cachekey', 'I am in the cache baby!', 1 );
                 });*/
                 //DOHVACANJE CACHE-a
+
                 /*Route::get('/', function()
                 {
                     return Cache::get( 'cachekey' );
                 });*/
+Route::get('markAsRead', function (){
 
+    auth()->user()->unreadNotifications->markAsRead();
+
+    return redirect()->back();})->name('markRead');
 
 
 Route::middleware(['auth', 'admin'])->group(function() {

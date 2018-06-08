@@ -25,6 +25,7 @@
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
             @else
+
                 <li class="dropdown">
 
                 <li><a class="{{ Request::is('/') ? "active" : "" }}" href="/jelaSvijeta/public/">Home</a></li>
@@ -49,6 +50,36 @@
                         </li>
                     </ul>
                 </li>
+
+                <!--////////////////////////////////////////////////////////////////////////////-->
+
+                <li class="dropdown">
+
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true" v-pre>
+                        <i class="fa fa-bell"></i>
+
+                    @if(auth()->user()->unreadnotifications->count())
+                        <span class="badge badge-light">{{auth()->user()->unreadnotifications->count()}}</span>
+                    @endif
+                    </a>
+
+
+                    <ul class="dropdown-menu">
+                        <li><a href="{{route('markRead')}}" style="color: #00e765">Mark all as read</a> </li>
+
+                            @foreach(auth()->user()->unreadNotifications as $notification)
+
+                            <li style="background-color: lightgrey"><a href="#">{{$notification->data['data']}}</a></li>
+                            @endforeach
+
+                            @foreach(auth()->user()->readNotifications as $notification)
+
+                                <li><a href="#">{{$notification->data['data']}}</a></li>
+                            @endforeach
+
+                    </ul>
+                </li>
+
             @endguest
 
 
