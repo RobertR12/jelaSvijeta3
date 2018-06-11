@@ -72,7 +72,7 @@
                             <li style="background-color: #41FF8E"><a href="{{route('markRead')}}">{{$notification->data['data']}}</a></li>
                             @endforeach
 
-                            @foreach(auth()->user()->readNotifications as $notification)
+                            @foreach(auth()->user()->readNotifications->take(5) as $notification)
 
                                 <li><a style="background-color: whitesmoke" href="{{route('readNotifi')}}">{{$notification->data['data']}}</a></li>
                             @endforeach
